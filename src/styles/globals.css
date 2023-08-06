@@ -14,5 +14,11 @@
         @apply md:hover:text-green-150 !important
     }
 
-    
+    .apply{
+        @apply bg-white !important
+    }
+
+    .active1{
+        @apply bg-white !important
+    }
 }
