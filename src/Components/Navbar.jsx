@@ -8,8 +8,8 @@ useEffect(()=>{
 },[])
 
 return (
-    <div className="fixed w-full opacity-80 z-[100]">
-        <nav className="border-gray-200 bg-[#252528] py-4 px-4">
+    <div className="fixed w-full opacity-90 z-[100]">
+        <nav className="border-gray-200 bg-[#252528] py-4 px-4 ">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto">
             <a href="#" className="flex items-center">
                 <span className="self-center text-2xl font-semibold whitespace-nowrap text-green-150">Anime Clone</span>

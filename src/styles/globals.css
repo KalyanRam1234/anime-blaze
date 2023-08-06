@@ -19,6 +19,6 @@
     }
 
     .active1{
-        @apply bg-white !important
+        @apply bg-green-150 !important
     }
 }
