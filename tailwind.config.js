@@ -9,6 +9,9 @@ module.exports = {
   plugins: [require('flowbite/plugin')],
   theme: {
     extend: {
+      screens:{
+        'xs': '550px'
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':

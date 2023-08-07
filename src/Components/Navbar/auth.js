@@ -27,7 +27,6 @@ export const Auth = () => {
           setEmail(null)
           setName(null)
           setPhoto(null)
-          console.log("No user signed in");
         }
       })
     }
@@ -40,14 +39,14 @@ export const Auth = () => {
 
       <div>
         {email ? 
-        <div className="md:p-2">
+        <div className="md:p-2 md:bg-green-150 md:rounded-md">
           <div className="capitalize flex flex-row ">
             <img src={photo} className="w-6 h-6 rounded-xl mt-[1px]"/>
             <div className="ml-2">{name}</div>
           </div>
         </div> 
           : 
-        <div onClick={signInWithGoogle} className="hover:bg-transparent" >
+        <div onClick={signInWithGoogle} className="md:hover:text-green-150" >
           Login
         </div>
       }

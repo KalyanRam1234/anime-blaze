@@ -64,7 +64,7 @@ return (
                     </li>: null}
                               
                     <li>
-                    <a href="#" className="block py-2 pl-3 pr-4 text-white rounded hover:bg-green-150 md:py-0 md:pl-0 "><Auth/></a>
+                    <a href="#" className="block py-2 pl-3 pr-4 text-white rounded hover:bg-green-150   md:hover:bg-transparent md:py-0 md:pl-0 "><Auth/></a>
                     </li>
 
                 </ul>

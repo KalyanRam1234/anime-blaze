@@ -67,7 +67,7 @@ function Carousel({
               <div className="absolute h-full w-[70%] overflow-hidden bg-gradient-to-r from-black to-transparent left-0"></div>
 
               {/* Details */}
-              <div className="absolute left-12 w-[50%]">
+              <div className="absolute left-8 md:left-12 w-[50%]">
 
                 <div className="text-xl text-green-150 font-semibold">
                   #{index + 1} Spotlight
@@ -83,11 +83,11 @@ function Carousel({
                 </div>
 
                 <div className="mt-6">
-                 <button className="text-lg text-white bg-green-150 border-none outline-none rounded-3xl px-5 py-2 mr-4 mb-4">
+                 <button className="md:text-lg text-white bg-green-150 border-none outline-none rounded-3xl px-4 md:px-5 py-2 mr-4 mb-3">
                   Watch Now
                   </button> 
 
-                  <button className="text-lg text-white bg-[#35353d] border-none outline-none rounded-3xl px-5 py-2">
+                  <button className="md:text-lg text-white bg-[#35353d] border-none outline-none rounded-3xl px-4 md:px-5 py-2">
                   Details
                   </button> 
                 </div>
