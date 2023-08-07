@@ -1,15 +1,38 @@
 import { useEffect, useState } from "react";
+import { Auth } from "./auth";
+import {auth} from "../../../utils/firebase"
+import { signOut } from "firebase/auth";
+
 function Navbar(){
 
 const [toggle, setToggle]=useState(false)
+const [logged, setLogged]=useState(false);
+
+const logOut = async () => {
+    try {
+    await signOut(auth);
+    } catch (err){
+      console.error(err);
+    }
+  };
 
 useEffect(()=>{
     if(window.innerWidth>=768) setToggle(true)
 },[])
 
+useEffect(()=>{
+    auth.onAuthStateChanged((user)=>{
+        if(user){
+            setLogged(true);
+        }
+        else setLogged(false);
+    })
+},[auth])
+
 return (
     <div className="fixed w-full opacity-90 z-[100]">
-        <nav className="border-gray-200 bg-[#252528] py-4 px-4 ">
+        {/* initially bg-transparent onscroll change to bg-[#252528] */}
+        <nav className="border-gray-200 bg-[#242429] py-3 px-4 ">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto">
             <a href="#" className="flex items-center">
                 <span className="self-center text-2xl font-semibold whitespace-nowrap text-green-150">Anime Clone</span>
@@ -26,18 +49,24 @@ return (
             {toggle ? 
             <div className="w-full md:block md:w-auto">
                 <ul className="flex flex-col font-medium  rounded-lg bg-[#252528] md:flex-row md:space-x-8  md:border-0 md:bg-transparent ">
-                    <li>
+                    <li className="md:my-auto">
                     <a href="#" className="block py-2 pl-3 pr-4 text-white hover:bg-green-150 md:hover:bg-transparent rounded md:bg-transparent md:p-0 onHover" aria-current="page">Search</a>
                     </li>
-                    <li>
+                    <li className="md:my-auto">
                     <a href="#" className="block py-2 pl-3 pr-4 text-white rounded hover:bg-green-150 md:hover:bg-transparent md:border-0  md:p-0 onHover">Genres</a>
                     </li>
-                    <li>
+                    <li className="md:my-auto">
                     <a href="#" className="block py-2 pl-3 pr-4 text-white rounded hover:bg-green-150 md:hover:bg-transparent md:border-0  md:p-0 onHover">MyList</a>
                     </li>
+
+                    {logged ? <li className="md:my-auto">
+                    <a href="#" className="block py-2 pl-3 pr-4 text-white rounded hover:bg-green-150 md:hover:bg-transparent md:border-0  md:p-0 onHover" onClick={logOut}>Logout</a>
+                    </li>: null}
+                              
                     <li>
-                    <a href="#" className="block py-2 pl-3 pr-4 text-white rounded hover:bg-green-150 md:hover:bg-transparent md:border-0  md:p-0  onHover">Login</a>
+                    <a href="#" className="block py-2 pl-3 pr-4 text-white rounded hover:bg-green-150 md:py-0 md:pl-0 "><Auth/></a>
                     </li>
+
                 </ul>
             </div> 
             

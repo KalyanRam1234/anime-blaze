@@ -64,7 +64,7 @@ function Carousel({
                 alt={image.alt}
                 className="object-cover h-[100vh] w-full "
               />
-              <div class="absolute h-full w-[70%] overflow-hidden bg-gradient-to-r from-black to-transparent left-0"></div>
+              <div className="absolute h-full w-[70%] overflow-hidden bg-gradient-to-r from-black to-transparent left-0"></div>
 
               {/* Details */}
               <div className="absolute left-12 w-[50%]">
@@ -73,16 +73,17 @@ function Carousel({
                   #{index + 1} Spotlight
                 </div>
 
-                <div className="text-white font-bold text-[3.5vw]">
+                <div className="text-white font-bold text-[8vw] sm:text-[6vw] md:text-[4.5vw] xl:text-[3.5vw] leading-tight mb-2">
                   {image.title} 
                 </div>
 
-                <div className="text-white mt-4  ">
-                  {image.description}
+                <div className="text-white mt-4 h-36 overflow-hidden">
+                  <div dangerouslySetInnerHTML={{ __html: image.description }} >
+                  </div>
                 </div>
 
-                <div className="mt-8">
-                 <button className="text-lg text-white bg-green-150 border-none outline-none rounded-3xl px-5 py-2 mr-4">
+                <div className="mt-6">
+                 <button className="text-lg text-white bg-green-150 border-none outline-none rounded-3xl px-5 py-2 mr-4 mb-4">
                   Watch Now
                   </button> 
 
