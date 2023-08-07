@@ -32,8 +32,8 @@ useEffect(()=>{
 return (
     <div className="fixed w-full opacity-90 z-[100]">
         {/* initially bg-transparent onscroll change to bg-[#252528] */}
-        <nav className="border-gray-200 bg-[#242429] py-3 px-4 ">
-        <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto">
+        <nav className="border-gray-200 bg-[#242428] py-3 px-4 ">
+        <div className="max-w-screen-3xl md:pl-8 flex flex-wrap items-center justify-between mx-auto">
             <a href="#" className="flex items-center">
                 <span className="self-center text-2xl font-semibold whitespace-nowrap text-green-150">Anime Clone</span>
             </a>
@@ -47,7 +47,7 @@ return (
             </button>
 
             {toggle ? 
-            <div className="w-full md:block md:w-auto">
+            <div className="w-full md:block md:w-auto md:pr-8">
                 <ul className="flex flex-col font-medium  rounded-lg bg-[#252528] md:flex-row md:space-x-8  md:border-0 md:bg-transparent ">
                     <li className="md:my-auto">
                     <a href="#" className="block py-2 pl-3 pr-4 text-white hover:bg-green-150 md:hover:bg-transparent rounded md:bg-transparent md:p-0 onHover" aria-current="page">Search</a>

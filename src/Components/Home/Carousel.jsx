@@ -7,7 +7,7 @@ function Carousel({
   effect = "slide",
 }) {
   const [activeIndex, setActiveIndex] = useState(0);
-
+  const [event, setEvent]=useState("next")
   const handleNext = useCallback(() => {
     setActiveIndex((prevIndex) =>
       prevIndex === images.length - 1 ? 0 : prevIndex + 1,

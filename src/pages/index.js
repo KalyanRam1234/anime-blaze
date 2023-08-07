@@ -1,6 +1,7 @@
 import { Inter } from 'next/font/google'
 import Navbar from '@/Components/Navbar/Navbar'
 import Carousel from '@/Components/Home/Carousel'
+import { LatestEpisodes } from '@/Components/Home/LatestEpisodes'
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -27,6 +28,7 @@ export default function Home() {
         }
       ]} showControls={true} showIndicators={true} />
       
+      <LatestEpisodes/>
    </>
   )
 }
