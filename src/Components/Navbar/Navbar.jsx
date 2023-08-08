@@ -2,11 +2,14 @@ import { useEffect, useState } from "react";
 import { Auth } from "./auth";
 import {auth} from "../../../utils/firebase"
 import { signOut } from "firebase/auth";
+import { useRouter } from "next/router";
 
 function Navbar(){
 
 const [toggle, setToggle]=useState(false)
 const [logged, setLogged]=useState(false);
+
+const router=useRouter()
 
 const logOut = async () => {
     try {
@@ -29,12 +32,16 @@ useEffect(()=>{
     })
 },[auth])
 
+
 return (
     <div className="fixed w-full opacity-90 z-[100]">
         {/* initially bg-transparent onscroll change to bg-[#252528] */}
         <nav className="border-gray-200 bg-[#242428] py-3 px-4 ">
         <div className="max-w-screen-3xl md:pl-8 flex flex-wrap items-center justify-between mx-auto">
-            <a href="#" className="flex items-center">
+            <a href="" className="flex items-center" onClick={(e)=>{
+                e.preventDefault();
+                router.push("/")
+            }}>
                 <span className="self-center text-2xl font-semibold whitespace-nowrap text-green-150">Anime Clone</span>
             </a>
             
