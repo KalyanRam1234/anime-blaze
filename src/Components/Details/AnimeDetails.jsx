@@ -1,17 +1,17 @@
 const AnimeDetails=({details})=>{
     return (
         <div className="w-full bg-[#242428] ">
-            <div className="grid grid-cols-12 px-8 pt-28 xl:pt-0 xl:gap-2">
+            <div className="grid grid-cols-12 px-4 md:px-8 pt-24 md:pt-28 xl:pt-0 xl:gap-2">
 
-                <div className="col-span-5 lg:col-span-4 xl:col-span-3">
-                    <div className="xl:h-screen xl:flex xl:flex-col xl:justify-center xl:items-center px-4 xl:px-0">
-                        <img src={details.image} alt={details.title} className="object-cover h-[450px] lg:h-[400px]"/>
+                <div className="col-span-12 md:col-span-5 lg:col-span-4 xl:col-span-3">
+                    <div className="w-full xl:h-screen xl:flex xl:flex-col xl:justify-center xl:items-center px-4 xl:px-0">
+                        <img src={details.image} alt={details.title} className="object-cover h-[350px] md:h-[400px] mx-auto md:mx-0"/>
                     </div>
                 </div>
 
-                <div className="col-span-7 lg:col-span-8 xl:col-span-6 text-white">
-                    <div className="h-[400px]  xl:h-screen flex flex-col justify-center">
-                        <div className="text-5xl font-bold">
+                <div className="col-span-12 md:col-span-7 lg:col-span-8 xl:col-span-6 text-white mt-6 md:mt-0">
+                    <div className="md:h-[400px] xl:h-screen flex flex-col justify-center">
+                        <div className="text-4xl md:text-5xl font-bold">
                             {details.title}
                         </div>
                         <div className="mt-6 flex flex-row">
@@ -29,8 +29,8 @@ const AnimeDetails=({details})=>{
                     </div>
                 </div>
 
-                <div className="col-span-12 xl:col-span-3 xl:my-0 my-6">
-                    <div className="xl:h-screen flex flex-col justify-center text-white px-4">
+                <div className="col-span-12 xl:col-span-3 xl:my-0 my-6 xl:border-t-0 border-t-2 border-green-150">
+                    <div className="xl:h-screen flex flex-col justify-center text-white md:px-4 mt-4 xl:pt-0">
 
                         <div className=" my-1">
                             <div>
