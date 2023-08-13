@@ -1,9 +1,9 @@
-export const AnimeWatch=({episodes})=>{
+export const AnimeWatch=({episodes, url})=>{
     return (
         <div className="w-full bg-[#3c3b3b]">
             <div className="grid grid-cols-12 px-4 md:px-12 pt-20 min-h-screen">
                 <div className="col-span-12 ">
-                    <iframe src="https://gotaku1.com/embedplus?id=MTg0MTQx&token=xWWYWne6R3Cu74f3Es7pYA&expires=1691924463" allowFullScreen="true" className="checkh mx-auto w-full"></iframe>
+                    <iframe src={url} allowFullScreen="true" className="checkh mx-auto w-full"></iframe>
                 </div>
                 <div className="col-span-12 ">
                     <div className="text-xl px-4 py-2 font-semibold bg-green-150 text-white sm:mt-8 ">

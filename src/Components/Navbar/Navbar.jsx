@@ -42,7 +42,7 @@ return (
         <div className="max-w-screen-3xl md:pl-8 flex flex-wrap items-center justify-between mx-auto">
             <a href="" className="flex items-center" onClick={(e)=>{
                 e.preventDefault();
-                router.push("/")
+                router.push("/",undefined,{shallow: true})
             }}>
                 <span className="self-center text-2xl font-semibold whitespace-nowrap text-green-150">Anime Clone</span>
             </a>

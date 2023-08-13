@@ -37,27 +37,26 @@ export async function getServerSideProps() {
   const res = await fetch(process.env.NEXT_PUBLIC_ANIME_API+`/top-airing?page=1`)
   const results = await res.json()
   const spotlight=results?.results; 
-  var data=[]
+  let data=[]
   //need to do some kind of matching
-  for(var i=0;i<spotlight.length;i++){
-    var original=spotlight[i]['title']
-    const res=await fetch(process.env.NEXT_PUBLIC_ENIME_API+`/${original}`);
-    const val=res.json().then((e)=>{
-      var output=e?.results
+  for(var i=0;i<spotlight?.length;i++){
+    let original=spotlight[i]['title']
+    let res=await fetch(process.env.NEXT_PUBLIC_ENIME_API+`/${original}`);
+    let val=await res.json();
+    var output=val?.results
       if(output.length>0){
         var img=output[0]['cover'];
         if(img==undefined || img==null) img=output[0]['image'];
         var title=output[0]['title'];
         var description=output[0]['description'];
-        var original=title
+        var id=spotlight[i]['id']
         data.push({
           "src": img,
           "title" : title,
           "description": description,
-          "original": original
+          "original": id
         })
       }
-    });
   }
 
   return { props: { data } }

@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useCallback } from "react";
-
+import { useRouter } from "next/router";
 function Carousel({
   images,
   showControls = true,
   showIndicators = true,
   effect = "slide",
 }) {
+
+  const router=useRouter();
   const [activeIndex, setActiveIndex] = useState(0);
   const [event, setEvent]=useState("next")
   const handleNext = useCallback(() => {
@@ -87,7 +89,10 @@ function Carousel({
                   Watch Now
                   </button> 
 
-                  <button className="md:text-lg text-white bg-[#35353d] border-none outline-none rounded-3xl px-4 md:px-5 py-2">
+                  <button className="md:text-lg text-white bg-[#35353d] border-none outline-none rounded-3xl px-4 md:px-5 py-2" onClick={(e)=>{
+                    e.preventDefault();
+                    router.push(`/details/${image.original}`)
+                  }}>
                   Details
                   </button> 
                 </div>

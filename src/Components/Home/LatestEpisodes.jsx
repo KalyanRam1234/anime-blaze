@@ -1,10 +1,12 @@
 import { HomeContext } from "@/pages";
+import { useRouter } from "next/router";
 import { useContext,useEffect,useState } from "react";
 
 export const LatestEpisodes = () => {
     const {page}=useContext(HomeContext);
     const {setPage}=useContext(HomeContext);
     const [episodes, setEpisodes]=useState([]);
+    const router=useRouter();
 
     return (
         <div className="border-t-2 border-green-150">
@@ -13,7 +15,10 @@ export const LatestEpisodes = () => {
         <div className="grid grid-cols-2 xs:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 px-4 md:px-12">
             {episodes.map((e)=>(
                 <div className="transition ease-in-out  hover:-translate-y-1 hover:scale-105  duration-300" key={e.episodeId}>
-                <a href="#">
+                <a href="#" onClick={(p)=>{
+                  p.preventDefault()
+                  router.push(`/watch/${e.episodeId}`)
+                }}>
                   <img
                     className="object-cover h-[60vw] xs:h-[45vw] md:h-[30vw] lg:h-[24vw] xl:h-[22vw] 2xl:h-[20vw] w-full"
                     src={e.image}
