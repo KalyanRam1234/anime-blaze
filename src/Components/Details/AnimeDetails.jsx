@@ -1,6 +1,6 @@
 const AnimeDetails=({details})=>{
     return (
-        <div className="w-full bg-[#242428] ">
+        <div className="w-full bg-[#3c3b3b] ">
             <div className="grid grid-cols-12 px-4 md:px-8 pt-24 md:pt-28 xl:pt-0 xl:gap-2">
 
                 <div className="col-span-12 md:col-span-5 lg:col-span-4 xl:col-span-3">
