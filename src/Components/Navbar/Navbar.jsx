@@ -3,12 +3,13 @@ import { Auth } from "./auth";
 import {auth} from "../../../utils/firebase"
 import { signOut } from "firebase/auth";
 import { useRouter } from "next/router";
+import { Search } from "./Search";
 
 function Navbar(){
 
 const [toggle, setToggle]=useState(false)
 const [logged, setLogged]=useState(false);
-
+const [search, setSearch]=useState(false);
 const router=useRouter()
 
 const logOut = async () => {
@@ -34,6 +35,7 @@ useEffect(()=>{
 
 
 return (
+    <div>
     <div className="fixed w-full opacity-90 z-[100] border-b-2 border-green-150 ">
         {/* initially bg-transparent onscroll change to bg-[#252528] */}
         <nav className="border-gray-200 bg-[#242428] py-3 px-4 ">
@@ -57,13 +59,21 @@ return (
             <div className="w-full md:block md:w-auto md:pr-8">
                 <ul className="flex flex-col font-medium  rounded-lg bg-[#252528] md:flex-row md:space-x-8  md:border-0 md:bg-transparent ">
                     <li className="md:my-auto">
-                    <a href="#" className="block py-2 pl-3 pr-4 text-white hover:bg-green-150 md:hover:bg-transparent rounded md:bg-transparent md:p-0 onHover" aria-current="page">Search</a>
+                    <a href="#" className="block py-2 pl-3 pr-4 text-white hover:bg-green-150 md:hover:bg-transparent rounded md:bg-transparent md:p-0 onHover" aria-current="page" onClick={()=>{
+                        setSearch(true);
+                    }}>Search</a>
                     </li>
                     <li className="md:my-auto">
-                    <a href="#" className="block py-2 pl-3 pr-4 text-white rounded hover:bg-green-150 md:hover:bg-transparent md:border-0  md:p-0 onHover">Genres</a>
+                    <a href="#" className="block py-2 pl-3 pr-4 text-white rounded hover:bg-green-150 md:hover:bg-transparent md:border-0  md:p-0 onHover" onClick={(e)=>{
+                        e.preventDefault();
+                        router.push("/genres")
+                    }}>Genres</a>
                     </li>
                     <li className="md:my-auto">
-                    <a href="#" className="block py-2 pl-3 pr-4 text-white rounded hover:bg-green-150 md:hover:bg-transparent md:border-0  md:p-0 onHover">MyList</a>
+                    <a href="#" className="block py-2 pl-3 pr-4 text-white rounded hover:bg-green-150 md:hover:bg-transparent md:border-0  md:p-0 onHover" onClick={(e)=>{
+                        e.preventDefault();
+                        router.push("/mylist")
+                    }}>MyList</a>
                     </li>
 
                     {logged ? <li className="md:my-auto">
@@ -82,6 +92,8 @@ return (
         </div>
         </nav>
 
+    </div>
+        {/* <Search toggle={search}/> */}
     </div>
 )
 }

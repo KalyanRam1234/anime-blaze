@@ -37,137 +37,18 @@ export const TopAiring=()=>{
 }
 
 const Heading=({page, setPage, setEpisodes})=>{
-
+    
     useEffect(()=>{
-        setEpisodes(
-            [
-                {
-                    "id": "watashi-no-shiawase-na-kekkon",
-                    "title": "Watashi no Shiawase na Kekkon",
-                    "image": "https://gogocdn.net/cover/watashi-no-shiawase-na-kekkon-1688158075.png",
-                    "url": "https://gogoanimehd.to/category/watashi-no-shiawase-na-kekkon",
-                    "genres": [
-                        "Fantasy",
-                        "Historical",
-                        "Romance"
-                    ]
-                },
-                {
-                    "id": "zom-100-zombie-ni-naru-made-ni-shitai-100-no-koto",
-                    "title": "Zom 100: Zombie ni Naru made ni Shitai 100 no Koto",
-                    "image": "https://gogocdn.net/cover/zom-100-zombie-ni-naru-made-ni-shitai-100-no-koto-1686557998.png",
-                    "url": "https://gogoanimehd.to/category/zom-100-zombie-ni-naru-made-ni-shitai-100-no-koto",
-                    "genres": [
-                        "Action",
-                        "Adult Cast",
-                        "Comedy",
-                        "Horror",
-                        "Seinen",
-                        "Supernatural",
-                        "Survival"
-                    ]
-                },
-                {
-                    "id": "mushoku-tensei-ii-isekai-ittara-honki-dasu",
-                    "title": "Mushoku Tensei II: Isekai Ittara Honki Dasu",
-                    "image": "https://gogocdn.net/cover/mushoku-tensei-ii-isekai-ittara-honki-dasu-1688156063.png",
-                    "url": "https://gogoanimehd.to/category/mushoku-tensei-ii-isekai-ittara-honki-dasu",
-                    "genres": [
-                        "Drama",
-                        "Ecchi",
-                        "Fantasy",
-                        "Isekai",
-                        "Reincarnation"
-                    ]
-                },
-                {
-                    "id": "jujutsu-kaisen-tv-2nd-season",
-                    "title": "Jujutsu Kaisen 2nd Season",
-                    "image": "https://gogocdn.net/cover/jujutsu-kaisen-tv-2nd-season-1688154932.png",
-                    "url": "https://gogoanimehd.to/category/jujutsu-kaisen-tv-2nd-season",
-                    "genres": [
-                        "Action",
-                        "Fantasy",
-                        "School",
-                        "Shounen"
-                    ]
-                },
-                {
-                    "id": "bleach-sennen-kessen-hen-ketsubetsu-tan",
-                    "title": "Bleach: Sennen Kessen-hen - Ketsubetsu-tan",
-                    "image": "https://gogocdn.net/cover/bleach-sennen-kessen-hen-ketsubetsu-tan-1688151974.png",
-                    "url": "https://gogoanimehd.to/category/bleach-sennen-kessen-hen-ketsubetsu-tan",
-                    "genres": [
-                        "Action",
-                        "Adventure",
-                        "Fantasy",
-                        "Shounen"
-                    ]
-                },
-                {
-                    "id": "suki-na-ko-ga-megane-wo-wasureta",
-                    "title": "Suki na Ko ga Megane wo Wasureta",
-                    "image": "https://gogocdn.net/cover/suki-na-ko-ga-megane-wo-wasureta-1688157809.png",
-                    "url": "https://gogoanimehd.to/category/suki-na-ko-ga-megane-wo-wasureta",
-                    "genres": [
-                        "Comedy",
-                        "Romantic Subtext",
-                        "School",
-                        "Shounen"
-                    ]
-                },
-                {
-                    "id": "kanojo-okarishimasu-3rd-season",
-                    "title": "Kanojo, Okarishimasu 3rd Season",
-                    "image": "https://gogocdn.net/cover/kanojo-okarishimasu-3rd-season-1688155060.png",
-                    "url": "https://gogoanimehd.to/category/kanojo-okarishimasu-3rd-season",
-                    "genres": [
-                        "Comedy",
-                        "Romance",
-                        "Shounen"
-                    ]
-                },
-                {
-                    "id": "bungou-stray-dogs-5th-season",
-                    "title": "Bungou Stray Dogs 5th Season",
-                    "image": "https://gogocdn.net/cover/bungou-stray-dogs-5th-season.png",
-                    "url": "https://gogoanimehd.to/category/bungou-stray-dogs-5th-season",
-                    "genres": [
-                        "Action",
-                        "Adult Cast",
-                        "Mystery",
-                        "Organized Crime",
-                        "Seinen",
-                        "Super Power",
-                        "Supernatural"
-                    ]
-                },
-                {
-                    "id": "horimiya-piece",
-                    "title": "Horimiya: Piece",
-                    "image": "https://gogocdn.net/cover/horimiya-piece.png",
-                    "url": "https://gogoanimehd.to/category/horimiya-piece",
-                    "genres": [
-                        "Romance",
-                        "School",
-                        "Shounen"
-                    ]
-                },
-                {
-                    "id": "masamune-kun-no-revenge-r",
-                    "title": "Masamune-kun no Revenge R",
-                    "image": "https://gogocdn.net/cover/masamune-kun-no-revenge-r-1688155880.png",
-                    "url": "https://gogoanimehd.to/category/masamune-kun-no-revenge-r",
-                    "genres": [
-                        "Comedy",
-                        "Harem",
-                        "Romance",
-                        "School",
-                        "Shounen"
-                    ]
-                }
-            ]
-        )
+        const GetData=async()=>{
+            const url=window.location.origin
+            const response=await fetch(url+`/api/topairing?page=${page}`)
+            const data=await response.json();
+            if(response.ok){
+                setEpisodes(data?.results)
+            }
+        }
+
+        GetData();
       }, [page, setPage]);
   
 

@@ -18,7 +18,6 @@ export const Auth = () => {
     const getUser=()=>{
       auth.onAuthStateChanged((user)=>{
         if(user){
-          console.log(user);
           setName(user?.displayName)
           setEmail(user?.email)
           setPhoto(user?.photoURL)

@@ -62,7 +62,7 @@ function Carousel({
               <img
                 src={image.src}
                 alt={image.alt}
-                className="object-cover h-[100vh] w-full "
+                className="object-cover h-[100vh]  object-top"
               />
               <div className="absolute h-full w-[70%] overflow-hidden bg-gradient-to-r from-black to-transparent left-0"></div>
 
@@ -73,7 +73,7 @@ function Carousel({
                   #{index + 1} Spotlight
                 </div>
 
-                <div className="text-white font-bold text-[8vw] sm:text-[6vw] md:text-[4.5vw] xl:text-[3.5vw] leading-tight mb-2">
+                <div className="text-white font-bold text-[8vw] sm:text-[6vw] md:text-[4.5vw] xl:text-[3.5vw] leading-tight mb-2 ">
                   {image.title} 
                 </div>
 
