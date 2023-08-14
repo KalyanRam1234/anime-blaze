@@ -126,7 +126,8 @@ function Carousel({
       )}
 
       {showIndicators && (
-        <div className="absolute bottom-0 left-[50%] translate-x-[-50%] flex gap-2 p-4">
+        <div className="hidden xs:block">
+          <div className="absolute bottom-0 left-[50%] translate-x-[-50%] flex gap-2 p-4">
           {images.map((_, index) => (
             <button
               key={index}
@@ -138,6 +139,7 @@ function Carousel({
               aria-selected={index === activeIndex}
             ></button>
           ))}
+        </div>
         </div>
       )}
     </div>

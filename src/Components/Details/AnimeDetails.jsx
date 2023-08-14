@@ -1,7 +1,55 @@
 import { useRouter } from "next/router";
-const AnimeDetails=({details})=>{
+import { useState, useEffect} from "react";
+import {
+    doc,
+    setDoc, 
+    collection,
+    serverTimestamp,
+  } from 'firebase/firestore';
+  import db from '../../../utils/firebase';
+import { auth } from "../../../utils/firebase";
+
+function AnimeDetails({details}){
+
+    const collectionRef=collection(db,'myList');
+    const [userEmail, setEmail]=useState();
+    const [userName, setName]=useState();
+
+    const getUser=()=>{
+        auth.onAuthStateChanged((user)=>{
+          if(user){
+            setName(user?.displayName)
+            setEmail(user?.email)
+          }
+        })
+      }
 
     const router=useRouter();
+    const email=userEmail? userEmail : "unknown";
+
+    useEffect(()=>{
+        getUser();
+    },[auth])
+
+    const addItem=async()=>{
+        const newItem= {
+            "image": details.image,
+            "title": details.title,
+            "animeId": details.id,
+            "id": details.id +"_"+ email,
+            "email": email,
+            "name": userName ? userName : "unknown",
+            "createdAt": serverTimestamp()
+        }
+
+        try{
+            const itemRef=doc(collectionRef,newItem.id);
+            await setDoc(itemRef, newItem);
+        }
+        catch(error){
+            console.log(error);
+        }
+    }
 
     return (
         <div className="w-full bg-[#3c3b3b] ">
@@ -10,6 +58,7 @@ const AnimeDetails=({details})=>{
                 <div className="col-span-12 md:col-span-5 lg:col-span-4 xl:col-span-3">
                     <div className="w-full xl:h-screen xl:flex xl:flex-col xl:justify-center xl:items-center px-4 xl:px-0">
                         <img src={details.image} alt={details.title} className="object-cover h-[350px] md:h-[400px] mx-auto md:mx-0"/>
+                        
                     </div>
                 </div>
 
@@ -26,7 +75,10 @@ const AnimeDetails=({details})=>{
                             Watch Now
                             </button> 
 
-                            <button className="md:text-lg text-white bg-[#35353d] border-none outline-none rounded-3xl px-4 py-2 ml-4">
+                            <button className="md:text-lg text-black bg-[#FFDD95] border-none outline-none rounded-3xl px-4 py-2 ml-4" onClick={(e)=>{
+                                e.preventDefault();
+                                addItem();
+                            }}>
                             Add To List
                             </button> 
                         </div>

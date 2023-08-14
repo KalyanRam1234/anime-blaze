@@ -42,10 +42,19 @@ export async function getServerSideProps() {
     let val=await res.json();
     var output=val?.results
       if(output.length>0){
-        var img=output[0]['cover'];
-        if(img==undefined || img==null) img=output[0]['image'];
-        var title=output[0]['title'];
-        var description=output[0]['description'];
+
+        var p=0;
+        for(var x=0;x<output.length;x++) {
+          if(output.length>1 && output[x].type!="OVA"){
+            p=x;
+            break;
+          }
+        }
+        
+        var img=output[p]['cover'];
+        if(img==undefined || img==null) img=output[p]['image'];
+        var title=output[p]['title'];
+        var description=output[p]['description'];
         var id=spotlight[i]['id']
         data.push({
           "src": img,
