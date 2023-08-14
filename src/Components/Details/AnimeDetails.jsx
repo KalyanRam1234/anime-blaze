@@ -1,4 +1,8 @@
+import { useRouter } from "next/router";
 const AnimeDetails=({details})=>{
+
+    const router=useRouter();
+
     return (
         <div className="w-full bg-[#3c3b3b] ">
             <div className="grid grid-cols-12 px-4 md:px-8 pt-24 md:pt-28 xl:pt-0 xl:gap-2">
@@ -15,7 +19,10 @@ const AnimeDetails=({details})=>{
                             {details.title}
                         </div>
                         <div className="mt-6 flex flex-row">
-                            <button className="md:text-lg text-white bg-green-150 border-none outline-none rounded-3xl px-4 py-2 ">
+                            <button className="md:text-lg text-white bg-green-150 border-none outline-none rounded-3xl px-4 py-2 " onClick={(e)=>{
+                                e.preventDefault();
+                                router.push(`/watch/${details.id}`)
+                            }}>
                             Watch Now
                             </button> 
 

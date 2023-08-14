@@ -1,6 +1,7 @@
 export default async function handler(req,res){
     try{
-        const response=await fetch('https://api.consumet.org/anime/gogoanime/top-airing?page=1');
+        const {id}= req.query;
+        const response=await fetch(process.env.NEXT_PUBLIC_ANIME_API+`/watch/${id}`);
         const data=await response.json().then((e)=>{
             res.status(200).json(e);
         });

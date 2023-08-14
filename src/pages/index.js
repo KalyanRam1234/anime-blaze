@@ -14,9 +14,6 @@ export default function Home({data}) {
   const [toppage, setTopPage]=useState(1);
   const [images, setImages]=useState([]);
 
-  useEffect(()=>{
-    console.log(data);
-  },[])
   return (
    <HomeContext.Provider value={{page, setPage, toppage, setTopPage}}>
       <Navbar/>

@@ -85,7 +85,10 @@ function Carousel({
                 </div>
 
                 <div className="mt-6">
-                 <button className="md:text-lg text-white bg-green-150 border-none outline-none rounded-3xl px-4 md:px-5 py-2 mr-4 mb-3">
+                 <button className="md:text-lg text-white bg-green-150 border-none outline-none rounded-3xl px-4 md:px-5 py-2 mr-4 mb-3" onClick={(e)=>{
+                    e.preventDefault();
+                    router.push(`/watch/${image.original}`)
+                  }}>
                   Watch Now
                   </button> 
 

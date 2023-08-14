@@ -17,7 +17,8 @@ export const LatestEpisodes = () => {
                 <div className="transition ease-in-out  hover:-translate-y-1 hover:scale-105  duration-300" key={e.episodeId}>
                 <a href="#" onClick={(p)=>{
                   p.preventDefault()
-                  router.push(`/watch/${e.episodeId}`)
+                  console.log(e);
+                  router.push(`/watch/${e.id}`)
                 }}>
                   <img
                     className="object-cover h-[60vw] xs:h-[45vw] md:h-[30vw] lg:h-[24vw] xl:h-[22vw] 2xl:h-[20vw] w-full"
