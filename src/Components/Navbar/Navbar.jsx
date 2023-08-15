@@ -9,7 +9,6 @@ function Navbar(){
 
 const [toggle, setToggle]=useState(false)
 const [logged, setLogged]=useState(false);
-const [search, setSearch]=useState(false);
 const router=useRouter()
 
 const logOut = async () => {
@@ -22,6 +21,7 @@ const logOut = async () => {
 
 useEffect(()=>{
     if(window.innerWidth>=768) setToggle(true)
+    
 },[])
 
 useEffect(()=>{
@@ -46,22 +46,24 @@ return (
             }}>
                 <span className="self-center text-2xl font-semibold whitespace-nowrap text-green-150">Anime Clone</span>
             </a>
-            
-            <button  type="button" className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden h focus:outline-none focus:ring-0 " onClick={()=>{
+
+            <div className="flex flex-row md:hidden font-semibold" >
+                <Search/>
+                <button  type="button" className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden h focus:outline-none focus:ring-0 " onClick={()=>{
                 toggle? setToggle(false): setToggle(true)
             }}>
                 <svg className="w-5 h-5 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
                     <path stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h15M1 7h15M1 13h15"/>
                 </svg>
             </button>
+            </div>
+            
 
             {toggle ? 
             <div className="w-full md:block md:w-auto md:pr-8">
                 <ul className="flex flex-col font-medium  rounded-lg bg-[#252528] md:flex-row md:space-x-8  md:border-0 md:bg-transparent ">
-                    <li className="md:my-auto">
-                    <a href="#" className="block py-2 pl-3 pr-4 text-white hover:bg-green-150 md:hover:bg-transparent rounded md:bg-transparent md:p-0 onHover" aria-current="page" onClick={()=>{
-                        setSearch(true);
-                    }}>Search</a>
+                    <li className="md:my-auto hidden md:block">
+                        <Search />
                     </li>
                     <li className="md:my-auto">
                     <a href="#" className="block py-2 pl-3 pr-4 text-white rounded hover:bg-green-150 md:hover:bg-transparent md:border-0  md:p-0 onHover" onClick={(e)=>{
@@ -93,7 +95,7 @@ return (
         </nav>
 
     </div>
-        {/* <Search toggle={search}/> */}
+    
     </div>
 )
 }

@@ -135,6 +135,11 @@ export const AnimeWatch=({info})=>{
                         <span>{info?.totalEpisodes}</span>
                     </div>
 
+                    <div className="mt-2 text-white text-lg">
+                        <span className="mr-2 font-semibold text-xl">Current Episode :</span>
+                        <span>{currentEpisode}</span>
+                    </div>
+
                     {info?.totalEpisodes>=100 ? 
 
                     <div className="mt-6 flex flex-row flex-wrap overflow-x-hidden overflow-y-auto h-[300px] ">
