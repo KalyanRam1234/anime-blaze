@@ -16,17 +16,38 @@ import {
     limit,
   } from 'firebase/firestore';
   import db from '../../../utils/firebase';
+  import { auth } from "../../../utils/firebase";
   
 const Page=()=>{
 
     const [episodes, setEpisodes]=useState([]);
     const colletionRef = collection(db, 'myList');
     const router=useRouter();
+    const [userEmail, setEmail]=useState("");
+
+    const getUser=()=>{
+        auth.onAuthStateChanged((user)=>{
+          if(user){
+            setEmail(user?.email)
+          }
+        })
+      }
+
+      async function deleteItem(id) {
+        try {
+          const schoolRef = doc(colletionRef, id);
+          await deleteDoc(schoolRef, schoolRef);
+        } catch (error) {
+          console.error(error);
+        }
+      }
+          
 
     useEffect(()=>{
+        getUser();
         const q = query(
             colletionRef,
-            where('email', '==', 'kalyanrammunagala@gmail.com') // does not need index
+            where('email', '==', userEmail) // does not need index
             
           );
           // const unsub = onSnapshot(collectionRef, (querySnapshot) => {
@@ -41,7 +62,7 @@ const Page=()=>{
             unsub();
           };
       
-    },[])
+    },[auth, userEmail])
 
     return (
         <div>
@@ -71,7 +92,10 @@ const Page=()=>{
                                 {e?.title}
                                 </h5>
                                 <div>
-                                    <button className="w-full  mx-auto bg-green-150 rounded-lg py-2 px-4 text-white text-[16px] mt-3 font-semibold ">
+                                    <button className="w-full  mx-auto bg-green-150 rounded-lg py-2 px-4 text-white text-[16px] mt-3 font-semibold " onClick={(p)=>{
+                                        p.preventDefault();
+                                        deleteItem(e.id);
+                                    }}>
                                         Remove 
                                     </button>
                                 </div>   
@@ -87,3 +111,4 @@ const Page=()=>{
 }
 
 export default Page;
+
