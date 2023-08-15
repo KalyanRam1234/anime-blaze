@@ -44,7 +44,7 @@ return (
                 e.preventDefault();
                 router.push("/",undefined,{shallow: true})
             }}>
-                <span className="self-center text-2xl font-semibold whitespace-nowrap text-green-150">Anime Clone</span>
+                <span className="self-center text-2xl font-semibold whitespace-nowrap text-green-150">Anime Blaze</span>
             </a>
 
             <div className="flex flex-row md:hidden font-semibold" >
