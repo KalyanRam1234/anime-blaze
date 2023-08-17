@@ -18,7 +18,7 @@ export const LatestEpisodes = () => {
                 <a href="#" onClick={(p)=>{
                   p.preventDefault()
                   console.log(e);
-                  router.push(`/watch/${e.id}`)
+                  router.push(`/watch/${e.id}?episode=${e.episodeNumber}`)
                 }}>
                   <img
                     className="object-cover h-[60vw] xs:h-[45vw] md:h-[30vw] lg:h-[24vw] xl:h-[22vw] 2xl:h-[20vw] w-full"

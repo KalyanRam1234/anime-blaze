@@ -27,7 +27,7 @@ export const TopAiring=()=>{
                   />
                 </a>
                 <div className="pt-3">
-                    <h5 className="mb-1 text-lg xl:text-xl font-semibold text-green-150 h-20 ">
+                    <h5 className="mb-1 text-lg xl:text-xl font-semibold text-green-150 h-20 overflow-hidden">
                       {e.title}
                     </h5>
                   

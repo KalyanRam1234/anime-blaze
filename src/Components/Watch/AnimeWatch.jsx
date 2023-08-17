@@ -8,8 +8,8 @@ import {
   import db from '../../../utils/firebase';
 import { auth } from "../../../utils/firebase";
 
-export const AnimeWatch=({info})=>{
-    const [currentEpisode, setCurrent]=useState(info?.totalEpisodes);
+export const AnimeWatch=({info, id})=>{
+    const [currentEpisode, setCurrent]=useState(id? id: 1);
     const [url, setURL]=useState("");
     
     const EpisodeButtons=Array.from({length : info?.totalEpisodes}, (_,index)=>{

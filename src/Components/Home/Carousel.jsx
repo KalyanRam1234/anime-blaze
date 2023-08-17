@@ -75,7 +75,7 @@ function Carousel({
                   #{index + 1} Spotlight
                 </div>
 
-                <div className="text-white font-bold text-[8vw] sm:text-[6vw] md:text-[4.5vw] xl:text-[3.5vw] leading-tight mb-2 ">
+                <div className="text-white font-bold text-[8vw] sm:text-[6vw] md:text-[4.5vw] xl:text-[3.5vw] leading-tight mb-2 max-h-[260px] overflow-hidden">
                   {image.title} 
                 </div>
 
