@@ -6,13 +6,22 @@ export const LatestEpisodes = () => {
     const {page}=useContext(HomeContext);
     const {setPage}=useContext(HomeContext);
     const [episodes, setEpisodes]=useState([]);
+    const [loading, setLoading] = useState(false);
     const router=useRouter();
 
     return (
         <div className="border-t-2 border-green-150">
-            <Heading page={page} setPage={setPage} setEpisodes={setEpisodes}/>
+            <Heading page={page} setPage={setPage} setEpisodes={setEpisodes} setLoading={setLoading}/>
             <div className="bg-[#242428] w-full pb-4 ">
-        <div className="grid grid-cols-2 xs:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 px-4 md:px-12">
+              {loading ? 
+              <div className="bg-[#242428] min-h-[400px] text-white text-xl flex w-full justify-center items-center ">
+              <div
+              className="inline-block h-16 w-16 animate-spin rounded-full border-8 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite] text-green-150"
+              role="status">
+            </div>
+          </div>  
+              :
+              <div className="grid grid-cols-2 xs:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 px-4 md:px-12">
             {episodes.map((e)=>(
                 <div className="transition ease-in-out  hover:-translate-y-1 hover:scale-105  duration-300" key={e.episodeId}>
                 <a href="#" onClick={(p)=>{
@@ -38,25 +47,35 @@ export const LatestEpisodes = () => {
               </div>
             ))}
         </div>
+            }
+        
       </div>
         </div>
       
     );
   };
 
-const Heading=({page, setPage, setEpisodes})=>{
+const Heading=({page, setPage, setEpisodes, setLoading})=>{
 
     useEffect(()=>{
       const GetData=async()=>{
+        setLoading(true);
         const url=window.location.origin
         const response=await fetch(url+`/api/latest?page=${page}`)
         const data=await response.json();
         if(response.ok){
             setEpisodes(data?.results)
         }
+        setLoading(false);
+
       }
+
       GetData();
     }, [page, setPage]);
+
+    // useEffect(()=>{
+    //   setLoading(true)
+    // }, [])
 
     return (
         <div className="flex flex-row px-4 md:px-12  py-4 bg-[#242428] w-full ">

@@ -11,7 +11,8 @@ import { auth } from "../../../utils/firebase";
 export const AnimeWatch=({info, id})=>{
     const [currentEpisode, setCurrent]=useState(id? id: 1);
     const [url, setURL]=useState("");
-    
+    const [loading, setLoading]=useState(false);
+
     const EpisodeButtons=Array.from({length : info?.totalEpisodes}, (_,index)=>{
         return <div >
             {currentEpisode==index+1 ? <div className="py-2 px-4 w-16 text-center hover:cursor-pointer mr-2 text-white rounded-md md:text-lg mb-2 hover:bg-green-150 bg-green-150" onClick={()=>{
@@ -30,9 +31,11 @@ export const AnimeWatch=({info, id})=>{
 
     useEffect(()=>{
         const setWatch=async()=>{
+            setLoading(true);
             const res=await fetch(window.location.origin+`/api/watch?id=${info?.episodes[currentEpisode-1]?.id}`)
 
             const data=await res.json().then((e)=>{
+                setLoading(false);
                 setURL(e?.headers?.Referer)
             })
             
@@ -82,9 +85,19 @@ export const AnimeWatch=({info, id})=>{
     return (
         <div className="w-full bg-[#3c3b3b] pb-8">
             <div className="grid grid-cols-12 px-4 md:px-12 pt-20 min-h-screen gap-4">
+                {loading? 
+                <div className="bg-[#3c3b3b] min-h-[400px] text-white text-xl flex w-full justify-center items-center col-span-12">
+                <div
+                className="inline-block h-16 w-16 animate-spin rounded-full border-8 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite] text-green-150"
+                role="status">
+              </div>
+            </div>
+                :
                 <div className="col-span-12 border-b-2 border-green-150 pb-8">
-                    <iframe src={url} allowFullScreen="true" className="checkh mx-auto w-full"></iframe>
-                </div>
+                <iframe src={url} allowFullScreen="true" className="checkh mx-auto w-full"></iframe>
+            </div>
+                }
+               
                 <div className="col-span-12 mt-4">
                     <div className="text-4xl text-green-150 font-semibold">
                         {info?.title}
