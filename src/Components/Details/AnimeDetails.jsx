@@ -70,7 +70,9 @@ function AnimeDetails({details}){
                         <div className="mt-6 flex flex-row">
                             <button className="md:text-lg text-white bg-green-150 border-none outline-none rounded-3xl px-4 py-2 " onClick={(e)=>{
                                 e.preventDefault();
-                                router.push(`/watch/${details.id}`)
+                                var p=details.episodes[0].id.split("-episode")[0]
+                                if(details.id=="gogoanimehd.io") router.push(`/watch/${p}`)
+                                else  router.push(`/watch/${details.id}`)
                             }}>
                             Watch Now
                             </button> 
