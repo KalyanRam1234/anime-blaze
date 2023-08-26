@@ -80,7 +80,7 @@ export const Comments=({animeId})=>{
     }
 
     return (
-        <div className="border-t-2 border-green-150 pt-4 bg-[#3c3b3b] px-12 pb-6">
+        <div className="border-t-2 border-green-150 pt-4 bg-[#3c3b3b] px-4 md:px-12 pb-6">
             <div className="text-4xl text-green-150 font-semibold">
                 Comments
             </div>
@@ -95,7 +95,7 @@ export const Comments=({animeId})=>{
                 </div>
             </div>
             {/* Add comment */}
-            <div className="w-full bg-[#242428] rounded py-4 px-12 mt-4">
+            <div className="w-full bg-[#242428] rounded py-4 px-4 md:px-12 mt-4">
                 <div className="font-semibold text-2xl text-[#FFDD95] ">
                     Add Comment
                 </div>
@@ -115,14 +115,14 @@ export const Comments=({animeId})=>{
 
                 <div className="mt-4 text-lg flex flex-row w-full">
                     <div className="ml-auto">
-                        <button className=" bg-[#FFDD95] py-2 px-6  font-semibold" onClick={(e)=>{
+                        <button className=" bg-[#FFDD95] md:py-2 py-1 px-4 md:px-8  md:font-semibold" onClick={(e)=>{
                             e.preventDefault();
                             setTitle("");
                             setComment("");
                         }}>
                             CANCEL
                         </button>
-                        <button className="ml-4 bg-green-150 py-2 px-8 text-white font-semibold" onClick={(e)=>{
+                        <button className="ml-4 bg-green-150 md:py-2 py-1 px-4 md:px-8 text-white md:font-semibold" onClick={(e)=>{
                             e.preventDefault();
                             addComment();
                         }}>
@@ -150,7 +150,7 @@ export const Comments=({animeId})=>{
                 </div>
                 </div>
 
-                <div className='mx-16 text-lg text-white'>
+                <div className='ml-16 md:mr-16 text-lg text-white max-h-[300px] overflow-hidden'>
                     {item.details}
                 </div>
             </div>

@@ -1,38 +1,43 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Anime Blaze
 
-## Getting Started
+* This is an anime clone web application that provides an user-friendly experience and a pleasing user interface(UI). This project was made to make it easier to access anime and view your desired anime in a click of a button. The main selling point of the application is the ease of usage and the design of the frontend.
 
-First, run the development server:
+* The application has the following features :
+    * Search Anime by Anime Name
+    * Get Details of an Anime on Search or by clicking on a card.
+    * View currently Top Airing Anime.
+    * Get Trending Anime displayed as carousel in home page
+    * Get list of Latest Episodes Across Anime's
+    * Watch an anime by clicking the Watch Now Button
+    * Adding Comments in the watch page of an anime.
+    * Login and Authentication using Firebase.
+    * Create a list of personalized anime.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+## Implementation Details
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+* The project was implemented using `Nextjs` as it makes it easier to do routing between different pages and also has an inbuilt backend.
+* The styling was done using `TailwindCss` to speed up the implementation of the application.
+* `Firebase` was used for login/authentication and `FireStore` was used to store a personalized list of anime and also to store comments written for an anime. It was used as the backend of the application.
+* The application is deployed on vercel.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Challenges Faced
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+* Getting the right api's for getting various anime related details.
+* Integrating multiple api's (Ex: Needed to get a cover image for the carousel using a different api and got the trending anime from another api).
+* Implementing a good looking frontend that would set my project apart from other applications.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Future Scope
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+* View anime based on genre.
+* Get personalized content based on anime that a user watches.
 
-## Learn More
+## Instructions to Run the Application
 
-To learn more about Next.js, take a look at the following resources:
+* The application is up and running on vercel and the link to the website is available in the github repo.
+* To run it locally, firebase needs to be setup and the keys need to be added to the .env file.
+* Once firebase is setup, clone the repository to your local system.
+* Make sure nodejs is present in your system. Run  `npm install`.
+* After this , run `npm run dev` to startup the application.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Note - Use the application in Brave or in a browser with adBlocker.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
