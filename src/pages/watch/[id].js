@@ -1,13 +1,14 @@
 import Navbar from "@/Components/Navbar/Navbar";
 import { AnimeWatch } from "@/Components/Watch/AnimeWatch";
 import { useEffect } from "react";
-
+import { Comments } from "@/Components/Watch/Comments";
 const Page=({data, episodeNumber})=>{
-   
+   const id=data.episodes[0].id.split("-episode")[0]
     return(
         <div>
             <Navbar/>
             <AnimeWatch info={data} id={episodeNumber}/>
+            <Comments animeId={id}/>
         </div>
     )
 }

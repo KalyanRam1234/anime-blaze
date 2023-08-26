@@ -32,11 +32,13 @@ function AnimeDetails({details}){
     },[auth])
 
     const addItem=async()=>{
+
+        let id=details.episodes[0].id.split("-episode")[0]
         const newItem= {
             "image": details.image,
             "title": details.title,
-            "animeId": details.id,
-            "id": details.id +"_"+ email,
+            "animeId": id,
+            "id": id +"_"+ email,
             "email": email,
             "name": userName ? userName : "unknown",
             "createdAt": serverTimestamp()
@@ -45,6 +47,7 @@ function AnimeDetails({details}){
         try{
             const itemRef=doc(collectionRef,newItem.id);
             await setDoc(itemRef, newItem);
+            alert("Added Anime Successfully!!")
         }
         catch(error){
             console.log(error);

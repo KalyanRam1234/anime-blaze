@@ -33,7 +33,7 @@ export const AnimeWatch=({info, id})=>{
         const setWatch=async()=>{
             setLoading(true);
             const res=await fetch(window.location.origin+`/api/watch?id=${info?.episodes[currentEpisode-1]?.id}`)
-
+            
             const data=await res.json().then((e)=>{
                 setLoading(false);
                 setURL(e?.headers?.Referer)
@@ -63,11 +63,12 @@ export const AnimeWatch=({info, id})=>{
     },[auth])
 
     const addItem=async()=>{
+        let id=info.episodes[0].id.split("-episode")[0]
         const newItem= {
             "image": info.image,
             "title": info.title,
-            "animeId": info.id,
-            "id": info.id +"_"+ email,
+            "animeId": id,
+            "id": id +"_"+ email,
             "email": email,
             "name": userName ? userName : "unknown",
             "createdAt": serverTimestamp()
@@ -76,6 +77,7 @@ export const AnimeWatch=({info, id})=>{
         try{
             const itemRef=doc(collectionRef,newItem.id);
             await setDoc(itemRef, newItem);
+            alert("Added Anime Successfully!!");
         }
         catch(error){
             console.log(error);
@@ -94,9 +96,16 @@ export const AnimeWatch=({info, id})=>{
             </div>
                 :
                 <div className="col-span-12 border-b-2 border-green-150 pb-8">
+                    {userName ? <div >
                 <iframe src={url} allowFullScreen="true" className="checkh mx-auto w-full"></iframe>
-            </div>
+                </div> :
+                <div className="flex justify-center text-white text-2xl mt-3">
+                Please Login to view the episode    
+                </div>
                 }
+                </div>
+                
+            }
                
                 <div className="col-span-12 mt-4">
                     <div className="text-4xl text-green-150 font-semibold">
@@ -129,7 +138,7 @@ export const AnimeWatch=({info, id})=>{
                         </div>
                     </div>
 
-                    <button className=" text-black bg-[#FFDD95] border-none outline-none rounded-3xl px-4 py-2 mt-2" onClick={(e)=>{
+                    <button className=" text-black bg-[#FFDD95] border-none outline-none rounded-3xl px-4 py-2 mt-2 font-semibold" onClick={(e)=>{
                         e.preventDefault();
                         addItem();
                     }}>
